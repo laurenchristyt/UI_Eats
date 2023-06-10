@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const { pool } = require('../config/config');
-const { v4: uuidv4 } = require('uuid');
 
 let accountIdCounter = 1; // Initialize the counter
 

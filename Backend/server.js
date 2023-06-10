@@ -3,8 +3,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const port = 3000;
-const { testDatabaseConnection } = require('./src/config/config');
-const usersRoutes = require('./src/routes/userRoutes');
+const { testDatabaseConnection } = require('./Backend/src/config/config');
+const usersRoutes = require('./Backend/src/routes/userRoutes');
+const pizzaRoutes = require('./routes/pizzaRoutes');
 
 app.get('/', (req, res) => {
   res.send('Connection established');
@@ -17,6 +18,7 @@ app.use(cors());
 
 // Routes
 app.use('/users', usersRoutes);
+app.use('/pizza', pizzaRoutes);
 
 testDatabaseConnection();
 // Start the server
