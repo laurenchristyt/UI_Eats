@@ -32,9 +32,12 @@ const usersController = {
       // Hash the password
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      // Generate account ID
-      const account_id = accountIdCounter++;
-      
+      // Get the next account ID
+      const accountQuery = 'SELECT MAX(account_id) FROM Account';
+      const accountResult = await pool.query(accountQuery);
+      const maxAccountId = accountResult.rows[0].max;
+      const account_id = maxAccountId ? maxAccountId + 1 : 1;
+
       // Insert the new user into the Account table
       const registerUserQuery = ` INSERT INTO Account (account_id, username, password, email, full_name) 
           VALUES ($1, $2, $3, $4, $5)
@@ -54,6 +57,7 @@ const usersController = {
       res.status(500).json({ message: 'Internal server error' });
     }
   },
+
 
   loginUser: async (req, res) => {
     try {
