@@ -1,26 +1,25 @@
 package com.project.ui_eats;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import androidx.appcompat.app.AppCompatActivity;
-import com.project.ui_eats.model.User;
-import com.project.ui_eats.request.BaseApiService;
-import com.project.ui_eats.request.UtilsApi;
 import retrofit2.Call;
+import android.view.View;
+import android.os.Bundle;
 import retrofit2.Callback;
 import retrofit2.Response;
-import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.Button;
+import android.content.Intent;
+import android.widget.EditText;
+import android.content.Context;
+import com.project.ui_eats.model.User;
+import com.project.ui_eats.request.UtilsApi;
+import androidx.appcompat.app.AppCompatActivity;
+import com.project.ui_eats.request.BaseApiService;
 
 public class LoginActivity extends AppCompatActivity {
     BaseApiService mApiService;
     Context mContext;
     EditText name, password;
     static User accountLogin;
-
     private Button btnLogin;
     private Button btnRegisterNow;
 
@@ -54,13 +53,32 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    protected User requestAccount() {
+        mApiService.getAccount(0).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful()) {
+                    User account = response.body();
+                    System.out.println(account.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(mContext, "No account found", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return null;
+    }
+
     protected User requestLogin(){
         mApiService.login(name.getText().toString(), password.getText().toString()).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
+                System.out.println("Login Successful" + response);
                 if (response.isSuccessful()) {
-                    Dashboard.accountLogin = response.body();
-                    Intent move = new Intent(LoginActivity.this, Dashboard.class);
+                    MainActivity.accountLogin = response.body();
+                    Intent move = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(move);
                     Toast.makeText(mContext, "Login Successful", Toast.LENGTH_SHORT).show();
                 }

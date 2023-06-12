@@ -14,13 +14,14 @@ app.get('/', (req, res) => {
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors());  
 
 // Routes
 app.use('/users', usersRoutes);
 app.use('/pizza', pizzaRoutes);
 
 testDatabaseConnection();
+
 // Start the server
 const PORT = process.PORT || 3000;
 app.listen(PORT, () => {

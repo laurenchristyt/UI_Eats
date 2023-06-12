@@ -1,7 +1,10 @@
 package com.project.ui_eats.request;
 
 import com.project.ui_eats.model.User;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -20,26 +23,28 @@ public interface BaseApiService {
     /**
      * Registers a new user with the specified name, email, and password.
      *
-     * @param name     the name of the user
+     * @param username     the name of the user
      * @param email    the email of the user
      * @param password the password of the user
      * @return a {@link Call} object representing the API call
      */
-    @POST("account/register")
-    Call<User> register(@Query("name") String name,
-                        @Query("email") String email,
-                        @Query("full name") String full_name,
-                        @Query("password") String password);
+
+    @FormUrlEncoded
+    @POST("users/register")
+    Call<User> register(@Field("username") String username,
+                        @Field("password") String password,
+                        @Field("email") String email,
+                        @Field("full_name") String full_name);
 
     /**
      * Attempts to log in with the specified email and password.
-     * @param email    the email of the user
+     * @param username    the username of the user
      * @param password the password of the user
      * @return a {@link Call} object representing the API call
      */
-
-    @POST("account/login")
-    Call<User> login(@Query("email") String email,
-                     @Query("password") String password);
+    @FormUrlEncoded
+    @POST("users/login")
+    Call<User> login(@Field("username") String username,
+                     @Field("password") String password);
 
 }

@@ -11,28 +11,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Username"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/etFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Full Name"
-        android:inputType="text" />
+        android:inputType="text"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/btnRegister"

@@ -1,6 +1,7 @@
 package com.project.ui_eats.model;
 
 public class User {
+    public int account_id;
     public String username;
     public String password;
     public String email;
@@ -9,10 +10,11 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                " Username =" + username +
-                ", Email ='" + email + '\'' +
-                ", Password ='" + password + '\'' +
-                ", Full Name ='" + full_name + '\'' +
+                "account_id=" + account_id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", full_name='" + full_name + '\'' +
                 '}';
     }
 }
