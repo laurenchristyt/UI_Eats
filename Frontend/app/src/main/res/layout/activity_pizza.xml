@@ -24,7 +24,7 @@
         android:layout_marginTop="16dp"/>
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/toppingRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvToppingTitle"
@@ -49,13 +49,44 @@
             android:text="Onions"/>
     </RadioGroup>
 
+    <RadioGroup
+        android:id="@+id/crustRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toppingRadioGroup"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/rbThin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thin" />
+
+        <RadioButton
+            android:id="@+id/rbThick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thick" />
+
+        <RadioButton
+            android:id="@+id/rbBread"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bread" />
+
+        <RadioButton
+            android:id="@+id/rbStuffed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stuffed" />
+    </RadioGroup>
 
     <Button
         android:id="@+id/btnCreateOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Order"
-
+        android:layout_below="@id/crustRadioGroup"
         android:layout_marginTop="16dp"/>
 
 </RelativeLayout>

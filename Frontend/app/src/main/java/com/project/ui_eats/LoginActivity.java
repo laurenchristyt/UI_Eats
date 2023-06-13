@@ -19,7 +19,6 @@ public class LoginActivity extends AppCompatActivity {
     BaseApiService mApiService;
     Context mContext;
     EditText name, password;
-    static User accountLogin;
     private Button btnLogin;
     private Button btnRegisterNow;
 

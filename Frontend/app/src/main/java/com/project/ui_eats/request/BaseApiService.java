@@ -1,16 +1,15 @@
 package com.project.ui_eats.request;
 
+import com.project.ui_eats.model.Crust;
 import com.project.ui_eats.model.Topping;
 import com.project.ui_eats.model.User;
 import com.project.ui_eats.model.Pizza;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface BaseApiService {
     /**
@@ -19,7 +18,7 @@ public interface BaseApiService {
      * @param id the id of the account to retrieve
      * @return a {@link Call} object representing the API call
      */
-    @GET("account/{id}")
+    @GET("users/get/{id}")
     Call<User> getAccount(@Path("id") int id);
 
     /**
@@ -40,7 +39,9 @@ public interface BaseApiService {
 
     @FormUrlEncoded
     @POST("pizza/customization")
-    Call<Pizza> createOrder(@Field("Topping") Topping topping
+    Call<Pizza> createOrder(@Field("id") int id,
+                            @Field("Topping") Topping topping,
+                            @Field("Crust") Crust crust
                         );
     /**
      * Attempts to log in with the specified email and password.
