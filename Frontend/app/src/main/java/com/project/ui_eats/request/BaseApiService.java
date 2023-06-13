@@ -1,6 +1,8 @@
 package com.project.ui_eats.request;
 
+import com.project.ui_eats.model.Topping;
 import com.project.ui_eats.model.User;
+import com.project.ui_eats.model.Pizza;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -36,6 +38,10 @@ public interface BaseApiService {
                         @Field("email") String email,
                         @Field("full_name") String full_name);
 
+    @FormUrlEncoded
+    @POST("pizza/customization")
+    Call<Pizza> createOrder(@Field("Topping") Topping topping
+                        );
     /**
      * Attempts to log in with the specified email and password.
      * @param username    the username of the user

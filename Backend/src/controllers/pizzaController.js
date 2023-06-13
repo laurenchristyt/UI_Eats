@@ -1,16 +1,29 @@
+
+const { pool } = require('../config/config');
+
 const pizzaController = {
     getCustomizationOptions: async (req, res) => {
       try {
         // Define the customization options for the pizza
-        const toppings = ['pepperoni', 'mushrooms', 'onions'];
-        const crustTypes = ['thin crust', 'deep dish', 'stuffed crust'];
-        const sauces = ['tomato', 'alfredo', 'bbq'];
-        const sizes = ['small', 'medium', 'large'];
+        
+        const {
+          Topping
+      } = req.body;
+      console.log(req.body);
+
+        const addPizza = ` INSERT INTO PIZZA (toppings) 
+          VALUES ($1)
+        `;
+        const insertPizzaTopping = [
+          Topping,
+        ];
+
+        await pool.query(addPizza, insertPizzaTopping);
 
         // Return the customization options as a response
-        res.status(200).json({ toppings, crustTypes, sauces, sizes });
+        res.status(200).json({ Topping });
       } catch (error) {
-        console.error('Error retrieving customization options', error);
+        console.error('Error creating customization', error);
         res.status(500).json({ message: 'Internal server error' });
       }
     },
