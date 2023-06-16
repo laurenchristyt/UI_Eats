@@ -80,7 +80,7 @@ public class PizzaActivity extends AppCompatActivity {
                 public void onResponse(Call<Pizza> call, Response<Pizza> response) {
                     System.out.println("pizza Successful " + response);
                     Toast.makeText(mContext, "Pizza Created", Toast.LENGTH_SHORT).show();
-                    Intent move = new Intent(PizzaActivity.this, MainActivity.class);
+                    Intent move = new Intent(PizzaActivity.this, CreateDelivery.class);
                     startActivity(move);
                 }
 

@@ -7,6 +7,8 @@ const { testDatabaseConnection } = require('./src/config/config');
 const usersRoutes = require('./src/routes/userRoutes');
 const pizzaRoutes = require('./src/routes/pizzaRoutes');
 const deliveryRoutes = require('./src/routes/deliveryRoutes');
+const burgerRoutes = require('./src/routes/burgerRoutes');
+
 
 app.get('/', (req, res) => {
   res.send('Connection established');
@@ -21,6 +23,7 @@ app.use(cors());
 app.use('/users', usersRoutes);
 app.use('/pizza', pizzaRoutes);
 app.use('/deliveryDetails', deliveryRoutes);
+app.use('/burger', burgerRoutes);
 
 testDatabaseConnection();
 

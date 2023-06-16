@@ -1,9 +1,15 @@
 package com.project.ui_eats.request;
 
+import com.project.ui_eats.model.Burger;
 import com.project.ui_eats.model.Crust;
+import com.project.ui_eats.model.DeliveryDetails;
+import com.project.ui_eats.model.Orders;
 import com.project.ui_eats.model.Topping;
 import com.project.ui_eats.model.User;
 import com.project.ui_eats.model.Pizza;
+
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -43,6 +49,22 @@ public interface BaseApiService {
                             @Field("Topping") Topping topping,
                             @Field("Crust") Crust crust
                         );
+
+    @FormUrlEncoded
+    @POST("burger/customization")
+    Call<Burger> createBurger(@Field("burger_type") ArrayList<Orders> burger_type,
+                              @Field("burger_note") String burger_note
+    );
+
+    @FormUrlEncoded
+    @POST("deliveryDetails/add")
+    Call<DeliveryDetails> createDelivery (@Field("id") int id,
+                                          @Field("deliveryName") String deliveryName,
+                                          @Field("deliveryAddress") String deliveryAddress,
+                                          @Field("deliveryPhoneNumber") int deliveryPhoneNumber,
+                                          @Field("deliveryNote") String deliveryNote
+    );
+
     /**
      * Attempts to log in with the specified email and password.
      * @param username    the username of the user
