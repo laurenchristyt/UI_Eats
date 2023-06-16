@@ -7,7 +7,7 @@ const pizzaController = {
         // Define the customization options for the pizza
     
         const {
-          account_id,
+          id,
           Topping,
           Crust
       } = req.body;
@@ -17,7 +17,7 @@ const pizzaController = {
           VALUES ($1, $2, $3)
         `;
         const insertPizzaTopping = [
-          account_id,
+          id,
           Topping,
           Crust
         ];
@@ -25,7 +25,7 @@ const pizzaController = {
         await pool.query(addPizza, insertPizzaTopping);
 
         // Return the customization options as a response
-        res.status(200).json({ account_id, Topping, Crust });
+        res.status(200).json({ id, Topping, Crust });
       } catch (error) {
         console.error('Error creating customization', error);
         res.status(500).json({ message: 'Internal server error' });

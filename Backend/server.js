@@ -6,6 +6,7 @@ const port = 3000;
 const { testDatabaseConnection } = require('./src/config/config');
 const usersRoutes = require('./src/routes/userRoutes');
 const pizzaRoutes = require('./src/routes/pizzaRoutes');
+const deliveryRoutes = require('./src/routes/deliveryRoutes');
 
 app.get('/', (req, res) => {
   res.send('Connection established');
@@ -19,6 +20,7 @@ app.use(cors());
 // Routes
 app.use('/users', usersRoutes);
 app.use('/pizza', pizzaRoutes);
+app.use('/deliveryDetails', deliveryRoutes);
 
 testDatabaseConnection();
 

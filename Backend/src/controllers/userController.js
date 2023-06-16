@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const { pool } = require('../config/config');
 
-let accountIdCounter = 1; // Initialize the counter
+//let accountIdCounter = 1; // Initialize the counter
 
 const usersController = {
   registerUser: async (req, res) => {
@@ -36,14 +36,14 @@ const usersController = {
       const accountQuery = 'SELECT MAX(account_id) FROM Account';
       const accountResult = await pool.query(accountQuery);
       const maxAccountId = accountResult.rows[0].max;
-      const account_id = maxAccountId ? maxAccountId + 1 : 1;
+      const id = maxAccountId ? maxAccountId + 1 : 1;
 
       // Insert the new user into the Account table
       const registerUserQuery = ` INSERT INTO Account (account_id, username, password, email, full_name) 
           VALUES ($1, $2, $3, $4, $5)
         `;
       const registerUserValues = [
-        account_id,
+        id,
         username,
         hashedPassword,
         email,
