@@ -15,12 +15,10 @@ To run this app locally, you need to have the following:
 - Change to the project directory
    ```
    cd/backend
-
   ```
 - Change to the project directory
    ```
    npm install
-   
   ```
   
   ## Installation (Frontend)
@@ -31,5 +29,4 @@ To run this app locally, you need to have the following:
  - Start the backend server:
    ```
    npm start
-   
   ```
