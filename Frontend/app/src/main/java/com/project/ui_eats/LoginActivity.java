@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.content.Intent;
 import android.widget.EditText;
 import android.content.Context;
+
+import com.project.ui_eats.model.DeliveryDetails;
 import com.project.ui_eats.model.User;
 import com.project.ui_eats.request.UtilsApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     BaseApiService mApiService;
     Context mContext;
     EditText name, password;
+    static DeliveryDetails details;
     private Button btnLogin;
     private Button btnRegisterNow;
 
@@ -76,8 +79,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 System.out.println("Login Successful" + response);
                 if (response.isSuccessful()) {
-                    MainActivity.accountLogin = response.body();
-                    Intent move = new Intent(LoginActivity.this, MainActivity.class);
+                    MenuActivity.accountLogin = response.body();
+                    Intent move = new Intent(LoginActivity.this, AboutMeActivity.class);
                     startActivity(move);
                     Toast.makeText(mContext, "Login Successful", Toast.LENGTH_SHORT).show();
                 }

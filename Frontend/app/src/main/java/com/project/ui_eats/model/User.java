@@ -6,6 +6,8 @@ public class User{
     public String password;
     public String email;
     public String full_name;
+    public DeliveryDetails details;
+    public double balance;
 
     @Override
     public String toString() {

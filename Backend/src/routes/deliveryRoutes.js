@@ -4,6 +4,6 @@ const deliveryDetailsController = require('../controllers/deliveryDetailsControl
 const router = express.Router();
 
 // Define the route for retrieving pizza customization options
-router.post('/add', deliveryDetailsController.addDetails);
+router.post('/:id/add', deliveryDetailsController.addDetails);
 
 module.exports = router;

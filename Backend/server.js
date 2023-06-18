@@ -5,9 +5,8 @@ const app = express();
 const port = 3000;
 const { testDatabaseConnection } = require('./src/config/config');
 const usersRoutes = require('./src/routes/userRoutes');
-const pizzaRoutes = require('./src/routes/pizzaRoutes');
 const deliveryRoutes = require('./src/routes/deliveryRoutes');
-const burgerRoutes = require('./src/routes/burgerRoutes');
+const topUpRoutes = require('./src/routes/topUpRoutes');
 
 
 app.get('/', (req, res) => {
@@ -21,9 +20,8 @@ app.use(cors());
 
 // Routes
 app.use('/users', usersRoutes);
-app.use('/pizza', pizzaRoutes);
 app.use('/deliveryDetails', deliveryRoutes);
-app.use('/burger', burgerRoutes);
+app.use('/topUp', topUpRoutes);
 
 testDatabaseConnection();
 

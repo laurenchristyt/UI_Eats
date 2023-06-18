@@ -13,4 +13,7 @@
     <color name="yello">#FCDDB0</color>
     <color name="opening">#FFAC18</color>
     <color name="grey">#EFF5F5</color>
+    <color name="colorPrimary">#FA4A0C</color>
+    <color name="colorPrimaryDark">#FF3700B3</color>
+    <color name="colorAccent">#FF018786</color>
 </resources>

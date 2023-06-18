@@ -7,21 +7,19 @@ const deliveryDetailsController = {
                 id,
                 deliveryName,
                 deliveryAddress,
-                deliveryPhoneNumber,
-                deliveryNote
+                deliveryPhoneNumber
             } = req.body;
             console.log(req.body);
 
             const addDeliveryDetails = `INSERT INTO DELIVERY (account_id, deliveryName, deliveryAddress, 
-                deliveryPhoneNumber, deliveryNote) 
-            VALUES ($1, $2, $3, $4, $5)
+                deliveryPhoneNumber) 
+            VALUES ($1, $2, $3, $4)
             `;
             const registerDeliveryValues = [
                 id,
                 deliveryName,
                 deliveryAddress,
-                deliveryPhoneNumber,
-                deliveryNote,
+                deliveryPhoneNumber
                 ]; const query = await pool.query(addDeliveryDetails, registerDeliveryValues);
                 
                 console.log(query);

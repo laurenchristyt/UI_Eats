@@ -1,12 +1,9 @@
 package com.project.ui_eats.request;
 
-import com.project.ui_eats.model.Burger;
-import com.project.ui_eats.model.Crust;
+
 import com.project.ui_eats.model.DeliveryDetails;
-import com.project.ui_eats.model.Orders;
-import com.project.ui_eats.model.Topping;
 import com.project.ui_eats.model.User;
-import com.project.ui_eats.model.Pizza;
+
 
 import java.util.ArrayList;
 
@@ -15,6 +12,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface BaseApiService {
@@ -43,27 +41,15 @@ public interface BaseApiService {
                         @Field("email") String email,
                         @Field("full_name") String full_name);
 
-    @FormUrlEncoded
-    @POST("pizza/customization")
-    Call<Pizza> createOrder(@Field("id") int id,
-                            @Field("Topping") Topping topping,
-                            @Field("Crust") Crust crust
-                        );
 
-    @FormUrlEncoded
-    @POST("burger/customization")
-    Call<Burger> createBurger(@Field("burger_type") ArrayList<Orders> burger_type,
-                              @Field("burger_note") String burger_note
-    );
-
-    @FormUrlEncoded
+    /**  @FormUrlEncoded
     @POST("deliveryDetails/add")
     Call<DeliveryDetails> createDelivery (@Field("id") int id,
                                           @Field("deliveryName") String deliveryName,
                                           @Field("deliveryAddress") String deliveryAddress,
                                           @Field("deliveryPhoneNumber") int deliveryPhoneNumber,
                                           @Field("deliveryNote") String deliveryNote
-    );
+    ); */
 
     /**
      * Attempts to log in with the specified email and password.
@@ -75,5 +61,17 @@ public interface BaseApiService {
     @POST("users/login")
     Call<User> login(@Field("username") String username,
                      @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("deliveryDetails/{id}/add")
+    Call<DeliveryDetails> registerRenter(@Field("id") int id,
+                                         @Field("deliveryName") String deliveryName,
+                                         @Field("deliveryAddress") String deliveryAddress,
+                                         @Field("deliveryPhoneNumber") String deliveryPhoneNumber);
+
+    @FormUrlEncoded
+    @PUT("topUp/{id}/modify")
+    Call<Boolean> topUp(@Field("id") int id,
+                        @Field("balance") int balance);
 
 }

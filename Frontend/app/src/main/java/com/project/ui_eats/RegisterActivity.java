@@ -21,7 +21,6 @@ import com.project.ui_eats.request.UtilsApi;
 public class RegisterActivity extends AppCompatActivity {
     BaseApiService mApiService;
     Context mContext;
-
     private EditText name, password, email, fullname;
     private Button btnRegister;
 
